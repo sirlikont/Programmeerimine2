@@ -9,7 +9,13 @@ namespace KooliProjekt.Application.Data
     public class Product
     {
         public int Id { get; set; }
+
         public string Name { get; set; } = string.Empty;
+
+        public string? Description { get; set; }
+
+        public string? PhotoUrl { get; set; }
+
         public decimal Price { get; set; }
 
         // Seos kategooriaga (üks toode kuulub ühte kategooriasse)

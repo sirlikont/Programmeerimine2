@@ -1,6 +1,8 @@
 using FluentValidation;
 using KooliProjekt.Application.Behaviors;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Features.Products;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +31,8 @@ namespace KooliProjekt.WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            var applicationAssembly = typeof(ErrorHandlingBehavior<,>).Assembly;
+            //var applicationAssembly = typeof(ErrorHandlingBehavior<,>).Assembly;
+            var applicationAssembly = typeof(ListProductsQueryHandler).Assembly;
             builder.Services.AddValidatorsFromAssembly(applicationAssembly);
             builder.Services.AddMediatR(config =>
             {
