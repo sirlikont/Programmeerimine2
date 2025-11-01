@@ -1,14 +1,15 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Features.Categories
 {
-    public class ListCategoriesQueryHandler : IRequestHandler<ListCategoriesQuery, OperationResult<IList<Category>>>
+    public class ListCategoriesQueryHandler : IRequestHandler<ListCategoriesQuery, OperationResult<PagedResult<Category>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -17,14 +18,15 @@ namespace KooliProjekt.Application.Features.Categories
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<IList<Category>>> Handle(ListCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<Category>>> Handle(ListCategoriesQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<IList<Category>>();
+            var result = new OperationResult<PagedResult<Category>>();
+
             result.Value = await _dbContext.Categories
-                                           .Include(c => c.Products)
-                                           .ToListAsync();
+                                           .OrderBy(c => c.Name) // Võid muuta vastavalt
+                                           .GetPagedAsync(request.Page, request.PageSize);
+
             return result;
         }
     }
 }
-

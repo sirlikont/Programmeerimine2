@@ -1,14 +1,15 @@
 ﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Features.Orders
 {
-    public class ListOrdersQueryHandler : IRequestHandler<ListOrdersQuery, OperationResult<IList<Order>>>
+    public class ListOrdersQueryHandler : IRequestHandler<ListOrdersQuery, OperationResult<PagedResult<Order>>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -17,15 +18,13 @@ namespace KooliProjekt.Application.Features.Orders
             _dbContext = dbContext;
         }
 
-        public async Task<OperationResult<IList<Order>>> Handle(ListOrdersQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<PagedResult<Order>>> Handle(ListOrdersQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<IList<Order>>();
+            var result = new OperationResult<PagedResult<Order>>();
 
-            // Loeme kõik Orders ja Include kaudu ka OrderItems ning nende Products
             result.Value = await _dbContext.Orders
-                                           .Include(o => o.OrderItems)
-                                           .ThenInclude(oi => oi.Product)
-                                           .ToListAsync();
+                                           .OrderBy(o => o.Id) // Võid muuta vastavalt
+                                           .GetPagedAsync(request.Page, request.PageSize);
 
             return result;
         }

@@ -17,10 +17,17 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var result = await _mediator.Send(new ListOrdersQuery());
+            var query = new ListOrdersQuery
+            {
+                Page = page,
+                PageSize = pageSize
+            };
+
+            var result = await _mediator.Send(query);
             return Ok(result.Value);
         }
+
     }
 }
