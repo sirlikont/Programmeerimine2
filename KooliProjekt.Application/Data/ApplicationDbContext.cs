@@ -43,6 +43,19 @@ namespace KooliProjekt.Application.Data
                 new Product { Id = 9, Name = "Notebook", Description = "College notebook", Price = 5, CategoryId = 3 },
                 new Product { Id = 10, Name = "Tablet", Description = "Portable device", Price = 350, CategoryId = 1 }
             );
+
+            // Fluent API piirangud
+            modelBuilder.Entity<Category>()
+                .HasIndex(c => c.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => new { p.CategoryId, p.Name })
+                .IsUnique();
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Status)
+                .HasDefaultValue("Paid");
         }
 
     }
