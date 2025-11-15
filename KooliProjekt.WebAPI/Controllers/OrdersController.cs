@@ -16,7 +16,9 @@ namespace KooliProjekt.WebAPI.Controllers
             _mediator = mediator;
         }
 
+        // LIST with pagination
         [HttpGet]
+        [Route("List")]
         public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var query = new ListOrdersQuery
@@ -29,5 +31,32 @@ namespace KooliProjekt.WebAPI.Controllers
             return Ok(result.Value);
         }
 
+        // GET single order by Id
+        [HttpGet]
+        [Route("Get")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var query = new GetOrderQuery { Id = id };
+            var response = await _mediator.Send(query);
+            return Ok(response.Value);
+        }
+
+        // SAVE order (create or update)
+        [HttpPost]
+        [Route("Save")]
+        public async Task<IActionResult> Save(SaveOrderCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
+
+        // DELETE order
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> Delete(DeleteOrderCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Ok(response);
+        }
     }
 }
