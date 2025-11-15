@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace KooliProjekt.WebAPI.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoriesController : ControllerBase
+    public class CategoriesController : ApiControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -17,6 +15,7 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("List")]
         public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var query = new ListCategoriesQuery
@@ -25,9 +24,33 @@ namespace KooliProjekt.WebAPI.Controllers
                 PageSize = pageSize
             };
 
-            var result = await _mediator.Send(query);
-            return Ok(result.Value);
+            var response = await _mediator.Send(query);
+            return Result(response);
         }
 
+        [HttpGet]
+        [Route("Get")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var query = new GetCategoryQuery { Id = id };
+            var response = await _mediator.Send(query);
+            return Result(response);
+        }
+
+        [HttpPost]
+        [Route("Save")]
+        public async Task<IActionResult> Save(SaveCategoryCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Result(response);
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> Delete(DeleteCategoryCommand command)
+        {
+            var response = await _mediator.Send(command);
+            return Result(response);
+        }
     }
 }

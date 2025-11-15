@@ -28,6 +28,6 @@ namespace KooliProjekt.Application.Data
         // Seos kategooriaga (üks toode kuulub ühte kategooriasse)
         [Required]
         public int CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -121,7 +121,7 @@ namespace KooliProjekt.Application.Data
                     var order = new Order
                     {
                         OrderDate = DateTime.Now.AddDays(-i),
-                        Status = "Uus"
+                        Status = "Paid"
                     };
 
                     // Lisa paar tellimuse rida
