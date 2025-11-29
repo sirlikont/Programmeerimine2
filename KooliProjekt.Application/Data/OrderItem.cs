@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KooliProjekt.Application.Data
 {
-    public class OrderItem
+    public class OrderItem : Entity
     {
         public int Id { get; set; }
 

@@ -8,41 +8,37 @@ using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using KooliProjekt.Application.Data.Repositories;
 
 namespace KooliProjekt.Application.Features.Products
 {
     public class GetProductQueryHandler : IRequestHandler<GetProductQuery, OperationResult<object>>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IProductRepository _productRepository;
 
-        public GetProductQueryHandler(ApplicationDbContext dbContext)
+        public GetProductQueryHandler(IProductRepository productRepository)
         {
-            _dbContext = dbContext;
+            _productRepository = productRepository;
         }
 
         public async Task<OperationResult<object>> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<object>();
 
-            result.Value = await _dbContext.Products
-                .Include(p => p.Category)
-                .Where(p => p.Id == request.Id)
-                .Select(p => new
-                {
-                    p.Id,
-                    p.Name,
-                    p.Description,
-                    p.PhotoUrl,
-                    p.Price,
-                    Category = new
-                    {
-                        p.Category.Id,
-                        p.Category.Name
-                    }
-                })
-                .FirstOrDefaultAsync();
+            var product = await _productRepository.GetByIdAsync(request.Id);
+
+            result.Value = new
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                PhotoUrl = product.PhotoUrl,
+                Price = product.Price,
+                CategoryId = product.CategoryId
+            };
 
             return result;
         }
     }
 }
+

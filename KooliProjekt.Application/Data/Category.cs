@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace KooliProjekt.Application.Data
 {
-    public class Category
+    public class Category : Entity
     {
         public int Id { get; set; }
 

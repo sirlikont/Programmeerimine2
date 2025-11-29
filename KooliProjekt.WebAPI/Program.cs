@@ -1,6 +1,7 @@
 using FluentValidation;
 using KooliProjekt.Application.Behaviors;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Features.Products;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -42,6 +43,11 @@ namespace KooliProjekt.WebAPI
                 config.AddOpenBehavior(typeof(TransactionalBehavior<,>));
             });
 
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,6 +61,7 @@ namespace KooliProjekt.WebAPI
 
 
             app.MapControllers();
+
 
             app.Run();
         }

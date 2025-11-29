@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
@@ -12,11 +13,11 @@ namespace KooliProjekt.Application.Features.Categories
 {
     public class SaveCategoryCommandHandler : IRequestHandler<SaveCategoryCommand, OperationResult>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public SaveCategoryCommandHandler(ApplicationDbContext dbContext)
+        public SaveCategoryCommandHandler(ICategoryRepository categoryRepository)
         {
-            _dbContext = dbContext;
+            _categoryRepository = categoryRepository;
         }
 
         public async Task<OperationResult> Handle(SaveCategoryCommand request, CancellationToken cancellationToken)
@@ -24,18 +25,13 @@ namespace KooliProjekt.Application.Features.Categories
             var result = new OperationResult();
 
             // Kui Id on 0, siis lisa uus kategooria
-            var category = request.Id == 0
-                ? new Category()
-                : await _dbContext.Categories.FindAsync(request.Id);
+            var category = request.Id != 0
+                ? await _categoryRepository.GetByIdAsync(request.Id)
+                : new Category();
 
             category.Name = request.Name;
 
-            if (request.Id == 0)
-            {
-                await _dbContext.Categories.AddAsync(category, cancellationToken);
-            }
-
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _categoryRepository.SaveAsync(category);
 
             return result;
         }

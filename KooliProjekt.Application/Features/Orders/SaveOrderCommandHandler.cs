@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Data.Repositories;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -13,44 +14,26 @@ namespace KooliProjekt.Application.Features.Orders
 {
     public class SaveOrderCommandHandler : IRequestHandler<SaveOrderCommand, OperationResult>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IOrderRepository _orderRepository;
 
-        public SaveOrderCommandHandler(ApplicationDbContext dbContext)
+        public SaveOrderCommandHandler(IOrderRepository orderRepository)
         {
-            _dbContext = dbContext;
+            _orderRepository = orderRepository;
         }
 
         public async Task<OperationResult> Handle(SaveOrderCommand request, CancellationToken cancellationToken)
         {
             var result = new OperationResult();
-            Order order;
 
-            if (request.Id == 0)
-            {
-                order = new Order();
-                await _dbContext.Orders.AddAsync(order, cancellationToken);
-            }
-            else
-            {
-                order = await _dbContext.Orders
-                    .Include(o => o.OrderItems)
-                    .FirstOrDefaultAsync(o => o.Id == request.Id, cancellationToken);
-            }
+            var order = request.Id != 0
+                ? await _orderRepository.GetByIdAsync(request.Id)
+                : new Order();
 
             order.OrderDate = request.OrderDate;
             order.Status = request.Status;
 
-            // Eemaldame olemasolevad OrderItems ja lisame uuesti
-            order.OrderItems.Clear();
-            order.OrderItems.AddRange(request.OrderItems.Select(oi => new KooliProjekt.Application.Data.OrderItem
-            {
-                ProductId = oi.ProductId,
-                Quantity = oi.Quantity,
-                PriceAtOrder = oi.PriceAtOrder
-            }));
+            await _orderRepository.SaveAsync(order);
 
-
-            await _dbContext.SaveChangesAsync(cancellationToken);
             return result;
         }
     }

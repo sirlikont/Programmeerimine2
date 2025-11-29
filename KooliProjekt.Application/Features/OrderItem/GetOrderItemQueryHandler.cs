@@ -9,45 +9,34 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using KooliProjekt.Application.Data.Repositories;
 
 namespace KooliProjekt.Application.Features.OrderItems
 {
     public class GetOrderItemQueryHandler : IRequestHandler<GetOrderItemQuery, OperationResult<object>>
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IOrderItemRepository _orderItemRepository;
 
-        public GetOrderItemQueryHandler(ApplicationDbContext dbContext)
+        public GetOrderItemQueryHandler(IOrderItemRepository orderItemRepository)
         {
-            _dbContext = dbContext;
+            _orderItemRepository = orderItemRepository;
         }
 
         public async Task<OperationResult<object>> Handle(GetOrderItemQuery request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<object>();
 
-            result.Value = await _dbContext.OrderItems
-                .Where(oi => oi.Id == request.Id)
-                .Select(oi => new
-                {
-                    oi.Id,
-                    oi.Quantity,
-                    oi.PriceAtOrder,
+            var orderItem = await _orderItemRepository.GetByIdAsync(request.Id);
 
-                    Product = new
-                    {
-                        oi.Product.Id,
-                        oi.Product.Name,
-                        oi.Product.Price
-                    },
-
-                    Order = new
-                    {
-                        oi.Order.Id,
-                        oi.Order.OrderDate,
-                        oi.Order.Status
-                    }
-                })
-                .FirstOrDefaultAsync(cancellationToken);
+            result.Value = new
+            {
+                Id = orderItem.Id,
+                ProductId = orderItem.ProductId,
+                OrderId = orderItem.OrderId,
+                Quantity = orderItem.Quantity,
+                PriceAtOrder = orderItem.PriceAtOrder
+                // jätame seotud objektid välja (Product, Order)
+            };
 
             return result;
         }
