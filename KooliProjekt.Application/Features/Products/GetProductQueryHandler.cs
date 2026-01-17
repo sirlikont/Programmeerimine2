@@ -8,40 +8,44 @@ using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using KooliProjekt.Application.Dto;
 
 namespace KooliProjekt.Application.Features.Products
 {
-    public class GetProductQueryHandler : IRequestHandler<GetProductQuery, OperationResult<object>>
+    public class GetProductQueryHandler : IRequestHandler<GetProductQuery, OperationResult<ProductDto>>
     {
         private readonly ApplicationDbContext _dbContext;
 
         public GetProductQueryHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            // Kui dbContext on null, viskame ArgumentNullException
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public async Task<OperationResult<object>> Handle(GetProductQuery request, CancellationToken cancellationToken)
+        public async Task<OperationResult<ProductDto>> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
-            var result = new OperationResult<object>();
+            var result = new OperationResult<ProductDto>();
 
-            result.Value = await _dbContext.Products
-                .Include(p => p.Category)
+            if (request == null)
+            {
+                result.Value = null;
+                return result;
+            }
+
+            var product = await _dbContext.Products
                 .Where(p => p.Id == request.Id)
-                .Select(p => new
+                .Select(p => new ProductDto
                 {
-                    p.Id,
-                    p.Name,
-                    p.Description,
-                    p.PhotoUrl,
-                    p.Price,
-                    Category = new
-                    {
-                        p.Category.Id,
-                        p.Category.Name
-                    }
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    PhotoUrl = p.PhotoUrl,
+                    CategoryId = p.CategoryId
                 })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(cancellationToken);
 
+            result.Value = product;
             return result;
         }
     }
