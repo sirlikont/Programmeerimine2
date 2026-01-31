@@ -16,11 +16,14 @@ namespace KooliProjekt.Application.Features.Categories
 
         public SaveCategoryCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(SaveCategoryCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
             var result = new OperationResult();
 
             // Kui Id on 0, siis lisa uus kategooria

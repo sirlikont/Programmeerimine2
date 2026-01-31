@@ -17,11 +17,14 @@ namespace KooliProjekt.Application.Features.Orders
 
         public SaveOrderCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(SaveOrderCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            throw new ArgumentNullException(nameof(request)); 
+
             var result = new OperationResult();
             Order order;
 

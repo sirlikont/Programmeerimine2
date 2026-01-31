@@ -16,11 +16,15 @@ namespace KooliProjekt.Application.Features.Products
 
         public DeleteProductCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            // Kui dbContext on null, viskame ArgumentNullException
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            throw new ArgumentNullException(nameof(request));  // ← lisatud null kontroll
+
             var result = new OperationResult();
 
             var product = await _dbContext.Products.FindAsync(request.Id);

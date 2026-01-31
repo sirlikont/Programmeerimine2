@@ -19,7 +19,7 @@ namespace KooliProjekt.Application.Features.OrderItems
 
         public ListOrderItemsQueryHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult<PagedResult<OrderItem>>> Handle(ListOrderItemsQuery request, CancellationToken cancellationToken)

@@ -17,11 +17,14 @@ namespace KooliProjekt.Application.Features.OrderItems
 
         public DeleteOrderItemCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(DeleteOrderItemCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+            throw new ArgumentNullException(nameof(request));
+
             var result = new OperationResult();
 
             var item = await _dbContext.OrderItems

@@ -75,5 +75,145 @@ namespace KooliProjekt.Application.UnitTests.Features
             Assert.False(result.HasErrors);
             Assert.Null(result.Value);
         }
+
+        // LIST HANDLER TESTID
+        [Fact]
+        public async Task List_should_return_all_categories()
+        {
+            await DbContext.Categories.AddAsync(new Category { Name = "C1" });
+            await DbContext.Categories.AddAsync(new Category { Name = "C2" });
+            await DbContext.SaveChangesAsync();
+
+            var handler = new ListCategoriesQueryHandler(DbContext);
+
+            var result = await handler.Handle(new ListCategoriesQuery(), CancellationToken.None);
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+            Assert.Equal(2, result.Value.Results.Count); // Count Results listis
+        }
+
+        [Fact]
+        public async Task List_should_return_empty_list_when_no_categories_exist()
+        {
+            var handler = new ListCategoriesQueryHandler(DbContext);
+
+            var result = await handler.Handle(new ListCategoriesQuery(), CancellationToken.None);
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+            Assert.Empty(result.Value.Results);
+        }
+
+        [Fact]
+        public void List_should_throw_when_dbcontext_is_null()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                new ListCategoriesQueryHandler(null)
+            );
+        }
+
+        // DELETE HANDLER TESTID
+        [Fact]
+        public void Delete_should_throw_when_dbcontext_is_null()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                new DeleteCategoryCommandHandler(null)
+            );
+        }
+
+        [Fact]
+        public async Task Delete_should_throw_when_request_is_null()
+        {
+            var handler = new DeleteCategoryCommandHandler(DbContext);
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await handler.Handle(null, CancellationToken.None);
+            });
+        }
+
+        [Fact]
+        public async Task Delete_should_delete_existing_category()
+        {
+            var category = new Category { Name = "ToDelete" };
+            await DbContext.Categories.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var handler = new DeleteCategoryCommandHandler(DbContext);
+            var command = new DeleteCategoryCommand { Id = category.Id };
+
+            var result = await handler.Handle(command, CancellationToken.None);
+            var count = DbContext.Categories.Count();
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+            Assert.Equal(0, count);
+        }
+
+        [Fact]
+        public async Task Delete_should_work_with_not_existing_category()
+        {
+            var handler = new DeleteCategoryCommandHandler(DbContext);
+            var command = new DeleteCategoryCommand { Id = 999 };
+
+            var result = await handler.Handle(command, CancellationToken.None);
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+        }
+
+        // SAVE HANDLER TESTID
+        [Fact]
+        public void Save_should_throw_when_dbcontext_is_null()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                new SaveCategoryCommandHandler(null)
+            );
+        }
+
+        [Fact]
+        public async Task Save_should_throw_when_request_is_null()
+        {
+            var handler = new SaveCategoryCommandHandler(DbContext);
+            await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            {
+                await handler.Handle(null, CancellationToken.None);
+            });
+        }
+
+        [Fact]
+        public async Task Save_should_add_new_category()
+        {
+            var handler = new SaveCategoryCommandHandler(DbContext);
+            var command = new SaveCategoryCommand { Name = "NewCat" };
+
+            var result = await handler.Handle(command, CancellationToken.None);
+            var saved = await DbContext.Categories.FirstOrDefaultAsync();
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+            Assert.NotNull(saved);
+            Assert.Equal(command.Name, saved.Name);
+        }
+
+        [Fact]
+        public async Task Save_should_update_existing_category()
+        {
+            var category = new Category { Name = "OldName" };
+            await DbContext.Categories.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var handler = new SaveCategoryCommandHandler(DbContext);
+            var command = new SaveCategoryCommand { Id = category.Id, Name = "UpdatedName" };
+
+            var result = await handler.Handle(command, CancellationToken.None);
+            var saved = await DbContext.Categories.FirstOrDefaultAsync();
+
+            Assert.NotNull(result);
+            Assert.False(result.HasErrors);
+            Assert.NotNull(saved);
+            Assert.Equal(command.Name, saved.Name);
+        }
+
     }
 }

@@ -17,11 +17,14 @@ namespace KooliProjekt.Application.Features.Orders
 
         public DeleteOrderCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var result = new OperationResult();
 
             // Leia order koos order itemitega
@@ -29,21 +32,21 @@ namespace KooliProjekt.Application.Features.Orders
                 .Include(o => o.OrderItems)
                 .FirstOrDefaultAsync(o => o.Id == request.Id, cancellationToken);
 
-            if (order == null)
+            if (order != null)
             {
-                result.AddError("Order not found.");
-                return result;
+                // Kustuta orderi itemid
+                _dbContext.OrderItems.RemoveRange(order.OrderItems);
+
+                // Kustuta order
+                _dbContext.Orders.Remove(order);
+
+                await _dbContext.SaveChangesAsync(cancellationToken);
             }
 
-            // Kustuta orderi itemid
-            _dbContext.OrderItems.RemoveRange(order.OrderItems);
-
-            // Kustuta order
-            _dbContext.Orders.Remove(order);
-
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            // Kui orderit ei leitud, ei tee midagi – test eeldab HasErrors=false
 
             return result;
         }
+
     }
 }

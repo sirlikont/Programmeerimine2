@@ -3,6 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -16,7 +17,8 @@ namespace KooliProjekt.Application.Features.Products
 
         public ListProductsQueryHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            // Kui dbContext on null, viskame ArgumentNullException
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult<PagedResult<Product>>> Handle(ListProductsQuery request, CancellationToken cancellationToken)

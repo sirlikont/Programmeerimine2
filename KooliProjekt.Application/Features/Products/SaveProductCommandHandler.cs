@@ -16,11 +16,15 @@ namespace KooliProjekt.Application.Features.Products
 
         public SaveProductCommandHandler(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            // Kui dbContext on null, viskame ArgumentNullException
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public async Task<OperationResult> Handle(SaveProductCommand request, CancellationToken cancellationToken)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));  // ← lisatud null kontroll
+
             var result = new OperationResult();
 
             var product = request.Id == 0
