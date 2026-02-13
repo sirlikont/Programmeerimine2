@@ -1,0 +1,356 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="28.2.7">
+  <diagram name="Page-1" id="2jeqP7WO1XpWsRAruHpY">
+    <mxGraphModel dx="2316" dy="2553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2V26IzH6zpm3BUKNqNiZ-1" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" edge="1" source="823indN7ENZY75qobVsw-1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="180" y="110" as="sourcePoint" />
+            <mxPoint x="340" y="60" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-1" value="&#xa;&lt;span style=&quot;font-size:12.0pt;line-height:115%;&#xa;font-family:&amp;quot;Aptos&amp;quot;,sans-serif;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:&#xa;Aptos;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;&#xa;mso-bidi-font-family:&amp;quot;Times New Roman&amp;quot;;mso-bidi-theme-font:minor-bidi;&#xa;mso-ansi-language:EN-GB;mso-fareast-language:EN-US;mso-bidi-language:AR-SA&quot;&gt;Õpilased&#xa;peavad saama tööturul konkurentsivõimeliseks&lt;/span&gt;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-2" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;B: Õpe peab vastama tööturu vajadustele&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="50" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-4" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;C: Õpe peab vastama riiklikule õppekavale&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="230" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-5" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.984;exitY=0.414;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-4" target="823indN7ENZY75qobVsw-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="250" as="sourcePoint" />
+            <mxPoint x="590" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="120" as="sourcePoint" />
+            <mxPoint x="580" y="70" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-7" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-1" target="823indN7ENZY75qobVsw-4">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="250" y="235" as="sourcePoint" />
+            <mxPoint x="320" y="260" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-8" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;D’: Hoida kinni riiklikult etteantud ainekavast&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="230" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-9" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;D: Suurendada eriala- ja praktiliste ainete mahtu&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="40" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-10" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;A: Õpetuse kvaliteet peab tõusma&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-11" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;B: Vajalikud on pädevad erialaõpetajad&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="420" width="110" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-12" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;C: Kool peab püsima eelarve piires&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="610" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-13" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;D: Palgata turutasemel spetsialistid&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="420" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-14" value="&#xa;&#xa;&#xa;&lt;p class=&quot;MsoNormal&quot;&gt;D’: Hoida palgakulud madalad&lt;/p&gt;&#xa;&#xa;&#xa;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="610" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-15" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=-0.002;entryY=0.637;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-10" target="823indN7ENZY75qobVsw-12">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="260" y="580" as="sourcePoint" />
+            <mxPoint x="360" y="670" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-16" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-10" target="823indN7ENZY75qobVsw-11">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="280" y="550" as="sourcePoint" />
+            <mxPoint x="380" y="640" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-17" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-11" target="823indN7ENZY75qobVsw-13">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="540" y="560" as="sourcePoint" />
+            <mxPoint x="640" y="650" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-18" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.005;entryY=0.128;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-12" target="823indN7ENZY75qobVsw-14">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="490" y="570" as="sourcePoint" />
+            <mxPoint x="590" y="660" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-19" value="&#xa;&lt;strong data-end=&quot;1330&quot; data-start=&quot;1324&quot;&gt;A:&lt;/strong&gt; Õpilased peavad saavutama head õpitulemused&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="780" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-20" value="&#xa;&lt;strong data-end=&quot;1388&quot; data-start=&quot;1382&quot;&gt;B:&lt;/strong&gt; Õpe peab olema paindlik ja kättesaadav&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="730" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-21" value="&#xa;&lt;strong data-end=&quot;1441&quot; data-start=&quot;1435&quot;&gt;C:&lt;/strong&gt; Õppetöö peab olema kontrollitav ja ühtse kvaliteediga&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="910" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-22" value="&#xa;&lt;strong data-end=&quot;1509&quot; data-start=&quot;1503&quot;&gt;D:&lt;/strong&gt; Võimaldada veebiõpe ja hübriidõpe&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="466" y="740" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-23" value="&#xa;&lt;strong data-end=&quot;1553&quot; data-start=&quot;1546&quot;&gt;D’:&lt;/strong&gt; Nõuda füüsilist kohalolekut auditooriumis&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="910" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-26" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-19" target="823indN7ENZY75qobVsw-21">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="190" y="860" as="sourcePoint" />
+            <mxPoint x="240" y="928" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-27" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1.017;exitY=0.39;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-19" target="823indN7ENZY75qobVsw-20">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="400" y="850" as="sourcePoint" />
+            <mxPoint x="450" y="918" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-28" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-21" target="823indN7ENZY75qobVsw-23">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="390" y="870" as="sourcePoint" />
+            <mxPoint x="440" y="938" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-29" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;entryX=0.073;entryY=1.03;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-20" target="823indN7ENZY75qobVsw-22">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="390" y="770" as="sourcePoint" />
+            <mxPoint x="440" y="838" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-34" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.186;exitY=0.048;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.809;entryY=0.971;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-14" target="823indN7ENZY75qobVsw-13">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="586" y="570" as="sourcePoint" />
+            <mxPoint x="636" y="520" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="636" y="570" />
+              <mxPoint x="586" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-35" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.087;exitY=-0.003;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-23" target="823indN7ENZY75qobVsw-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="870" as="sourcePoint" />
+            <mxPoint x="590" y="820" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="590" y="870" />
+              <mxPoint x="610" y="860" />
+              <mxPoint x="540" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-36" value="" style="curved=1;endArrow=classic;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-8" target="823indN7ENZY75qobVsw-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="200" as="sourcePoint" />
+            <mxPoint x="610" y="150" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="610" y="200" />
+              <mxPoint x="620" y="170" />
+              <mxPoint x="560" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-37" value="&#xa;&lt;strong data-end=&quot;520&quot; data-start=&quot;514&quot;&gt;A:&lt;/strong&gt;&lt;br data-end=&quot;523&quot; data-start=&quot;520&quot;&gt;&#xa;&lt;strong data-end=&quot;587&quot; data-start=&quot;523&quot;&gt;TPT peab pakkuma kvaliteetset ja tööturule vastavat haridust&lt;/strong&gt;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="405" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-38" value="&#xa;&lt;p data-end=&quot;714&quot; data-start=&quot;635&quot;&gt;&lt;strong data-end=&quot;641&quot; data-start=&quot;635&quot;&gt;B:&lt;/strong&gt;&lt;br data-end=&quot;644&quot; data-start=&quot;641&quot;&gt;&#xa;&lt;strong data-end=&quot;714&quot; data-start=&quot;644&quot;&gt;Õpe peab olema kaasaegne, praktiline ja tööturu vajadustele vastav&lt;/strong&gt;&lt;/p&gt;&#xa;&lt;p data-end=&quot;789&quot; data-start=&quot;716&quot;&gt;(koondab:&lt;br data-end=&quot;728&quot; data-start=&quot;725&quot;&gt;&#xa;– erialaainete maht&lt;br data-end=&quot;750&quot; data-start=&quot;747&quot;&gt;&#xa;– pädevad õpetajad&lt;br data-end=&quot;771&quot; data-start=&quot;768&quot;&gt;&#xa;– tööturu ootused)&lt;/p&gt;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="220" width="190" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-39" value="&#xa;&lt;p data-end=&quot;929&quot; data-start=&quot;837&quot;&gt;&lt;strong data-end=&quot;843&quot; data-start=&quot;837&quot;&gt;C:&lt;/strong&gt;&lt;br data-end=&quot;846&quot; data-start=&quot;843&quot;&gt;&#xa;&lt;strong data-end=&quot;929&quot; data-start=&quot;846&quot;&gt;Õpe peab vastama riiklikele, rahalistele ja organisatsioonilistele piirangutele&lt;/strong&gt;&lt;/p&gt;&#xa;&lt;p data-end=&quot;1001&quot; data-start=&quot;931&quot;&gt;(koondab:&lt;br data-end=&quot;943&quot; data-start=&quot;940&quot;&gt;&#xa;– riiklik õppekava&lt;br data-end=&quot;964&quot; data-start=&quot;961&quot;&gt;&#xa;– eelarve&lt;br data-end=&quot;976&quot; data-start=&quot;973&quot;&gt;&#xa;– kontroll ja standardid)&lt;/p&gt;&#xa;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="570" width="200" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-41" value="&#xa;&lt;p data-end=&quot;1128&quot; data-start=&quot;1050&quot;&gt;&lt;strong data-end=&quot;1056&quot; data-start=&quot;1050&quot;&gt;D:&lt;/strong&gt;&lt;br data-end=&quot;1059&quot; data-start=&quot;1056&quot;&gt;&#xa;&lt;strong data-end=&quot;1128&quot; data-start=&quot;1059&quot;&gt;Suurendada paindlikkust, erialaõpet ja investeeringuid õpetamisse&lt;/strong&gt;&lt;/p&gt;&#xa;&lt;p data-end=&quot;1227&quot; data-start=&quot;1130&quot;&gt;(koondab:&lt;br data-end=&quot;1142&quot; data-start=&quot;1139&quot;&gt;&#xa;– rohkem eriala- ja praktilisi aineid&lt;br data-end=&quot;1182&quot; data-start=&quot;1179&quot;&gt;&#xa;– turutasemel õpetajad&lt;br data-end=&quot;1207&quot; data-start=&quot;1204&quot;&gt;&#xa;– veebi-/hübriidõpe)&lt;/p&gt;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="170" width="270" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-42" value="&#xa;&lt;p data-end=&quot;1358&quot; data-start=&quot;1277&quot;&gt;&lt;strong data-end=&quot;1284&quot; data-start=&quot;1277&quot;&gt;D’:&lt;/strong&gt;&lt;br data-end=&quot;1287&quot; data-start=&quot;1284&quot;&gt;&#xa;&lt;strong data-end=&quot;1358&quot; data-start=&quot;1287&quot;&gt;Säilitada olemasolev struktuur, kulupiirangud ja jäik õppekorraldus&lt;/strong&gt;&lt;/p&gt;&#xa;&lt;p data-end=&quot;1436&quot; data-start=&quot;1360&quot;&gt;(koondab:&lt;br data-end=&quot;1372&quot; data-start=&quot;1369&quot;&gt;&#xa;– kinni ainekavast&lt;br data-end=&quot;1393&quot; data-start=&quot;1390&quot;&gt;&#xa;– madalad kulud&lt;br data-end=&quot;1411&quot; data-start=&quot;1408&quot;&gt;&#xa;– kohustuslik kontaktõpe)&lt;/p&gt;&#xa;&#xa;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="585" width="260" height="225" as="geometry" />
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-44" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;entryX=0;entryY=0.333;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-39">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="930" y="530" as="sourcePoint" />
+            <mxPoint x="1060" y="650" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-45" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-42">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1220" y="680" as="sourcePoint" />
+            <mxPoint x="1340" y="590" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-46" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;entryX=-0.013;entryY=0.602;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-37" target="823indN7ENZY75qobVsw-38">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="940" y="300" as="sourcePoint" />
+            <mxPoint x="1070" y="390" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-47" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;exitX=1.002;exitY=0.67;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-38" target="823indN7ENZY75qobVsw-41">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="1270" y="480" as="sourcePoint" />
+            <mxPoint x="1400" y="570" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-48" value="" style="curved=1;endArrow=classic;html=1;rounded=0;exitX=0.311;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.695;entryY=1.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-42" target="823indN7ENZY75qobVsw-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1370" y="617" as="sourcePoint" />
+            <mxPoint x="1457" y="510" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1560" y="500" />
+              <mxPoint x="1310" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-51" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-37">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="490" as="sourcePoint" />
+            <mxPoint x="170" y="440" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="390" />
+              <mxPoint x="600" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-52" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.612;exitY=1.006;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-1" target="823indN7ENZY75qobVsw-37">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="340" as="sourcePoint" />
+            <mxPoint x="170" y="290" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="230" y="310" />
+              <mxPoint x="490" y="360" />
+              <mxPoint x="670" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-53" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-37">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="90" y="780" as="sourcePoint" />
+            <mxPoint x="140" y="730" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="140" y="710" />
+              <mxPoint x="680" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-54" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-21" target="823indN7ENZY75qobVsw-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="1070" as="sourcePoint" />
+            <mxPoint x="990" y="1020" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="1020" />
+              <mxPoint x="860" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-56" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-23" target="823indN7ENZY75qobVsw-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1030" y="970" as="sourcePoint" />
+            <mxPoint x="1080" y="920" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1300" y="1020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-57" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-22" target="823indN7ENZY75qobVsw-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="790" y="940" as="sourcePoint" />
+            <mxPoint x="900" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="910" y="600" />
+              <mxPoint x="1210" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-59" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.302;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-20" target="823indN7ENZY75qobVsw-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="630" y="830" as="sourcePoint" />
+            <mxPoint x="1000" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="820" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-60" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.008;entryY=0.823;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="670" as="sourcePoint" />
+            <mxPoint x="730" y="620" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1000" y="890" />
+              <mxPoint x="1220" y="890" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-61" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="635" as="sourcePoint" />
+            <mxPoint x="480" y="585" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="740" y="790" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-62" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.465;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="450" as="sourcePoint" />
+            <mxPoint x="440" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-63" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="460" as="sourcePoint" />
+            <mxPoint x="730" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="990" y="160" />
+              <mxPoint x="1160" y="170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-64" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.061;entryY=0.024;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.958;exitY=0.952;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="823indN7ENZY75qobVsw-8" target="823indN7ENZY75qobVsw-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="310" as="sourcePoint" />
+            <mxPoint x="710" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-65" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="80" as="sourcePoint" />
+            <mxPoint x="710" y="30" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1010" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-67" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="320" as="sourcePoint" />
+            <mxPoint x="480" y="270" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="740" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="823indN7ENZY75qobVsw-68" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.149;entryY=-0.001;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="823indN7ENZY75qobVsw-38">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="130" as="sourcePoint" />
+            <mxPoint x="510" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
