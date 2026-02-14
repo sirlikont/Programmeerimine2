@@ -25,7 +25,7 @@ See on lihtne e-pood, mille eesmärk on hallata tooteid, kategooriaid ja tellimu
 
 ## Käivitamine
 
-1. Kloneeri hoidla:
+1. Klooni repo:
 ```bash
 git clone https://github.com/sirlikont/Programmeerimine2.git
 ```
