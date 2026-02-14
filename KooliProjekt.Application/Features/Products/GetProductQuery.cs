@@ -1,14 +1,16 @@
-﻿using System;
+﻿using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KooliProjekt.Application.Infrastructure.Results;
-using MediatR;
-using KooliProjekt.Application.Dto;
 
 namespace KooliProjekt.Application.Features.Products
 {
+    [ExcludeFromCodeCoverage]
     public class GetProductQuery : IRequest<OperationResult<ProductDto>>
     {
         public int Id { get; set; }

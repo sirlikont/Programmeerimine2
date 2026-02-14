@@ -215,5 +215,38 @@ namespace KooliProjekt.Application.UnitTests.Features
             Assert.Equal(command.Name, saved.Name);
         }
 
+        // ================= VALIDATOR TESTID =================
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public async Task SaveCategoryValidator_should_fail_when_name_is_invalid(string name)
+        {
+            // Arrange
+            var command = new SaveCategoryCommand { Name = name };
+            var validator = new SaveCategoryCommandValidator(DbContext);
+
+            // Act
+            var result = await validator.ValidateAsync(command);
+
+            // Assert
+            Assert.False(result.IsValid);
+        }
+
+        [Fact]
+        public async Task SaveCategoryValidator_should_succeed_when_name_is_valid()
+        {
+            // Arrange
+            var command = new SaveCategoryCommand { Name = "Valid category" };
+            var validator = new SaveCategoryCommandValidator(DbContext);
+
+            // Act
+            var result = await validator.ValidateAsync(command);
+
+            // Assert
+            Assert.True(result.IsValid);
+        }
+
+
     }
 }

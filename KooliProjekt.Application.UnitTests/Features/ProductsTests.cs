@@ -267,5 +267,59 @@ namespace KooliProjekt.Application.UnitTests.Features
             Assert.Equal(request.Description, saved.Description);
             Assert.Equal(request.PhotoUrl, saved.PhotoUrl);
         }
+        // ================= VALIDATOR TESTID =================
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public async Task SaveProductValidator_should_fail_when_name_is_invalid(string name)
+        {
+            var command = new SaveProductCommand
+            {
+                Name = name,
+                Price = 10,
+                CategoryId = 1
+            };
+
+            var validator = new SaveProductCommandValidator(DbContext);
+            var result = await validator.ValidateAsync(command);
+
+            Assert.False(result.IsValid);
+        }
+
+        [Fact]
+        public async Task SaveProductValidator_should_fail_when_price_is_negative()
+        {
+            var command = new SaveProductCommand
+            {
+                Name = "Test",
+                Price = -5,
+                CategoryId = 1
+            };
+
+            var validator = new SaveProductCommandValidator(DbContext);
+            var result = await validator.ValidateAsync(command);
+
+            Assert.False(result.IsValid);
+        }
+
+        [Fact]
+        public async Task SaveProductValidator_should_succeed_when_data_is_valid()
+        {
+            var command = new SaveProductCommand
+            {
+                Name = "Valid product",
+                Price = 10,
+                Description = "Desc",
+                PhotoUrl = "img.png",
+                CategoryId = 1
+            };
+
+            var validator = new SaveProductCommandValidator(DbContext);
+            var result = await validator.ValidateAsync(command);
+
+            Assert.True(result.IsValid);
+        }
+
     }
 }

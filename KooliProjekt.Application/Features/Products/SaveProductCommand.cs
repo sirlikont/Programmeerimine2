@@ -1,14 +1,16 @@
-﻿using System;
+﻿using KooliProjekt.Application.Behaviors;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KooliProjekt.Application.Behaviors;
-using KooliProjekt.Application.Infrastructure.Results;
-using MediatR;
 
 namespace KooliProjekt.Application.Features.Products
 {
+    [ExcludeFromCodeCoverage]
     public class SaveProductCommand : IRequest<OperationResult>, ITransactional
     {
         public int Id { get; set; }           // 0 kui uus
