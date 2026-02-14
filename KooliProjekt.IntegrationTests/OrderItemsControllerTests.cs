@@ -1,4 +1,4 @@
-﻿using KooliProjekt.Application.Features.Orders;
+﻿using KooliProjekt.Application.Features.OrderItems;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,11 +7,11 @@ namespace KooliProjekt.WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OrdersController : ControllerBase
+    public class OrderItemsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public OrdersController(IMediator mediator)
+        public OrderItemsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -21,7 +21,7 @@ namespace KooliProjekt.WebAPI.Controllers
         [Route("List")]
         public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var query = new ListOrdersQuery
+            var query = new ListOrderItemsQuery
             {
                 Page = page,
                 PageSize = pageSize
@@ -29,38 +29,38 @@ namespace KooliProjekt.WebAPI.Controllers
 
             var result = await _mediator.Send(query);
 
-            // Return the full OperationResult so integration tests can deserialize OperationResult<PagedResult<Order>>
+            // Return full OperationResult so integration tests can deserialize
             return Ok(result);
         }
 
-        // GET single order by Id
+        // GET single order item by Id
         [HttpGet]
         [Route("Get")]
         public async Task<IActionResult> Get(int id)
         {
-            var query = new GetOrderQuery { Id = id };
+            var query = new GetOrderItemQuery { Id = id };
             var response = await _mediator.Send(query);
 
-            // If nothing found or there are errors return 404 so integration tests observing NotFound will pass
+            // Return 404 if nothing found or has errors
             if (response == null || response.Value == null || response.HasErrors)
                 return NotFound();
 
             return Ok(response);
         }
 
-        // SAVE order (create or update)
+        // CREATE or UPDATE order item
         [HttpPost]
         [Route("Save")]
-        public async Task<IActionResult> Save(SaveOrderCommand command)
+        public async Task<IActionResult> Save(SaveOrderItemCommand command)
         {
             var response = await _mediator.Send(command);
             return Ok(response);
         }
 
-        // DELETE order
+        // DELETE order item
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> Delete(DeleteOrderCommand command)
+        public async Task<IActionResult> Delete(DeleteOrderItemCommand command)
         {
             var response = await _mediator.Send(command);
             return Ok(response);
