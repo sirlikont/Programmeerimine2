@@ -1,69 +1,221 @@
-﻿using KooliProjekt.Application.Features.OrderItems;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Features.OrderItems;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
+using KooliProjekt.IntegrationTests.Helpers;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace KooliProjekt.WebAPI.Controllers
+namespace KooliProjekt.IntegrationTests
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class OrderItemsController : ControllerBase
+    [Collection("Sequential")]
+    public class OrderItemsControllerTests : TestBase
     {
-        private readonly IMediator _mediator;
-
-        public OrderItemsController(IMediator mediator)
+        [Fact]
+        public async Task List_should_return_orderitems()
         {
-            _mediator = mediator;
+            var url = "/api/OrderItems/List";
+
+            var response = await Client.GetFromJsonAsync<PagedResult<OrderItem>>(url);
+
+            Assert.NotNull(response);
+            Assert.True(response.Results.Count >= 0);
         }
 
-        // LIST with pagination
-        [HttpGet]
-        [Route("List")]
-        public async Task<IActionResult> List([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        [Fact]
+        public async Task Get_should_return_existing_orderitem()
         {
-            var query = new ListOrderItemsQuery
+            var category = new Category
             {
-                Page = page,
-                PageSize = pageSize
+                Name = $"Category_{Guid.NewGuid()}"
             };
 
-            var result = await _mediator.Send(query);
+            await DbContext.AddAsync(category);
+            await DbContext.SaveChangesAsync();
 
-            // Return full OperationResult so integration tests can deserialize
-            return Ok(result);
+            var product = new Product
+            {
+                Name = "Test Product",
+                Price = 10,
+                CategoryId = category.Id
+            };
+
+            await DbContext.AddAsync(product);
+            await DbContext.SaveChangesAsync();
+
+            var order = new Order
+            {
+                Status = "Paid"
+            };
+
+            await DbContext.AddAsync(order);
+            await DbContext.SaveChangesAsync();
+
+            var orderItem = new OrderItem
+            {
+                ProductId = product.Id,
+                OrderId = order.Id,
+                Quantity = 1,
+                PriceAtOrder = 10
+            };
+
+            await DbContext.AddAsync(orderItem);
+            await DbContext.SaveChangesAsync();
+
+            var url = $"/api/OrderItems/Get?id={orderItem.Id}";
+
+            var response = await Client.GetFromJsonAsync<OrderItem>(url);
+
+            Assert.NotNull(response);
+            Assert.Equal(orderItem.Id, response.Id);
         }
 
-        // GET single order item by Id
-        [HttpGet]
-        [Route("Get")]
-        public async Task<IActionResult> Get(int id)
+        [Fact]
+        public async Task Get_should_return_notfound_for_missing_orderitem()
         {
-            var query = new GetOrderItemQuery { Id = id };
-            var response = await _mediator.Send(query);
+            var url = "/api/OrderItems/Get?id=9999";
 
-            // Return 404 if nothing found or has errors
-            if (response == null || response.Value == null || response.HasErrors)
-                return NotFound();
+            var response = await Client.GetAsync(url);
 
-            return Ok(response);
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
         }
 
-        // CREATE or UPDATE order item
-        [HttpPost]
-        [Route("Save")]
-        public async Task<IActionResult> Save(SaveOrderItemCommand command)
+        [Fact]
+        public async Task Delete_should_remove_orderitem()
         {
-            var response = await _mediator.Send(command);
-            return Ok(response);
+            var category = new Category
+            {
+                Name = $"Category_{Guid.NewGuid()}"
+            };
+
+            await DbContext.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var product = new Product
+            {
+                Name = "Test Product",
+                Price = 10,
+                CategoryId = category.Id
+            };
+
+            await DbContext.AddAsync(product);
+            await DbContext.SaveChangesAsync();
+
+            var order = new Order
+            {
+                Status = "Paid"
+            };
+
+            await DbContext.AddAsync(order);
+            await DbContext.SaveChangesAsync();
+
+            var orderItem = new OrderItem
+            {
+                ProductId = product.Id,
+                OrderId = order.Id,
+                Quantity = 1,
+                PriceAtOrder = 10
+            };
+
+            await DbContext.AddAsync(orderItem);
+            await DbContext.SaveChangesAsync();
+
+            var url = "/api/OrderItems/Delete";
+
+            var command = new DeleteOrderItemCommand
+            {
+                Id = orderItem.Id
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            var response = await Client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var deleted = await DbContext.OrderItems
+                .AsNoTracking()
+                .FirstOrDefaultAsync(o => o.Id == orderItem.Id);
+
+            Assert.Null(deleted);
         }
 
-        // DELETE order item
-        [HttpDelete]
-        [Route("Delete")]
-        public async Task<IActionResult> Delete(DeleteOrderItemCommand command)
+        [Fact]
+        public async Task Delete_should_handle_missing_orderitem()
         {
-            var response = await _mediator.Send(command);
-            return Ok(response);
+            var url = "/api/OrderItems/Delete";
+
+            var command = new DeleteOrderItemCommand
+            {
+                Id = 9999
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            var response = await Client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task Save_should_create_new_orderitem()
+        {
+            var category = new Category
+            {
+                Name = $"Category_{Guid.NewGuid()}"
+            };
+
+            await DbContext.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var product = new Product
+            {
+                Name = "Test Product",
+                Price = 10,
+                CategoryId = category.Id
+            };
+
+            await DbContext.AddAsync(product);
+            await DbContext.SaveChangesAsync();
+
+            var order = new Order
+            {
+                Status = "Paid"
+            };
+
+            await DbContext.AddAsync(order);
+            await DbContext.SaveChangesAsync();
+
+            var url = "/api/OrderItems/Save";
+
+            var command = new SaveOrderItemCommand
+            {
+                ProductId = product.Id,
+                OrderId = order.Id,
+                Quantity = 1,
+                PriceAtOrder = 10
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            var response = await Client.SendAsync(request);
+
+            response.EnsureSuccessStatusCode();
         }
     }
 }

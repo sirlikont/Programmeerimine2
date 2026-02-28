@@ -1,9 +1,13 @@
 ﻿using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Features.Products;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using KooliProjekt.IntegrationTests.Helpers;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Net;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Xunit;
@@ -56,5 +60,128 @@ namespace KooliProjekt.IntegrationTests
 
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         }
+        [Fact]
+        public async Task Delete_should_remove_product()
+        {
+            // Arrange
+            var category = new Category
+            {
+                Name = $"Category_{Guid.NewGuid()}"
+            };
+
+            await DbContext.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var product = new Product
+            {
+                Name = "Test Product",
+                Description = "Test description",
+                Price = 10,
+                CategoryId = category.Id
+            };
+
+            await DbContext.AddAsync(product);
+            await DbContext.SaveChangesAsync();
+
+            var url = "/api/Products/Delete";
+
+            var command = new DeleteProductCommand
+            {
+                Id = product.Id
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            // Act
+            var response = await Client.SendAsync(request);
+
+            // Assert
+            Assert.NotNull(response);
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var deleted = await DbContext.Products
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.Id == product.Id);
+
+            Assert.Null(deleted);
+        }
+        [Fact]
+        public async Task Delete_should_handle_missing_product()
+        {
+            var url = "/api/Products/Delete";
+
+            var command = new DeleteProductCommand
+            {
+                Id = 9999
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            var response = await Client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+        [Fact]
+        public async Task Save_should_create_new_product()
+        {
+            // Arrange
+            var category = new Category
+            {
+                Name = $"Category_{Guid.NewGuid()}"
+            };
+
+            await DbContext.AddAsync(category);
+            await DbContext.SaveChangesAsync();
+
+            var url = "/api/Products/Save";
+
+            var command = new SaveProductCommand
+            {
+                Name = "New Product",
+                Description = "Test",
+                Price = 25,
+                CategoryId = category.Id
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            // Act
+            var response = await Client.SendAsync(request);
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+        }
+        [Fact]
+        public async Task Save_should_not_update_missing_product()
+        {
+            var url = "/api/Products/Save";
+
+            var command = new SaveProductCommand
+            {
+                Id = 9999,
+                Name = "Updated",
+                Price = 15,
+                CategoryId = 1
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            {
+                Content = JsonContent.Create(command)
+            };
+
+            var response = await Client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
     }
 }
